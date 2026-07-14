@@ -68,7 +68,7 @@ function estimateReadTime(text){
   // ~200 mots/min en français
   const words = text.trim().split(/\s+/).length;
   const minutes = Math.ceil(words / 200);
-  return minutes < 1 ? 'moins d'1 min' : `${minutes} min`;
+  return minutes < 1 ? "<1 min" : `${minutes} min`;
 }
 
 function renderFeed(list){
