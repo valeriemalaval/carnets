@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Valérie — Carnets</title>
+  <link>https://carnets.valeriemalaval.fr/</link>
+  <description>Trois terrains, un même geste de pensée : signaux faibles, architecture des systèmes, écriture.</description>
+  <language>fr</language>
+  <generator>Valérie — Carnets</generator>
+  <copyright>© Valérie</copyright>
+  <item>
+    <title>À quoi sert encore une heatmap ?</title>
+    <link>https://carnets.valeriemalaval.fr/article.html?slug=a-quoi-sert-encore-une-heatmap</link>
+    <guid>https://carnets.valeriemalaval.fr/article.html?slug=a-quoi-sert-encore-une-heatmap</guid>
+    <pubDate>2026-07-05</pubDate>
+  </item>
+  <item>
+    <title>La monétisation de l'ombre</title>
+    <link>https://carnets.valeriemalaval.fr/article.html?slug=la-monetisation-de-lombre</link>
+    <guid>https://carnets.valeriemalaval.fr/article.html?slug=la-monetisation-de-lombre</guid>
+    <pubDate>2026-06-28</pubDate>
+  </item>
+  <item>
+    <title>Construire ce qui manque</title>
+    <link>https://carnets.valeriemalaval.fr/article.html?slug=construire-ce-qui-manque</link>
+    <guid>https://carnets.valeriemalaval.fr/article.html?slug=construire-ce-qui-manque</guid>
+    <pubDate>2026-07-03</pubDate>
+  </item>
+  <item>
+    <title>Soigner ou gouverner</title>
+    <link>https://carnets.valeriemalaval.fr/article.html?slug=soigner-ou-gouverner</link>
+    <guid>https://carnets.valeriemalaval.fr/article.html?slug=soigner-ou-gouverner</guid>
+    <pubDate>2026-06-20</pubDate>
+  </item>
+</channel>
+</rss>

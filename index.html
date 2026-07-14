@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valérie — Carnets</title>
+<meta name="description" content="Trois terrains, un même geste de pensée : signaux faibles, architecture des systèmes, écriture.">
+<meta name="theme-color" content="#F2F3EE">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Valérie — Carnets">
+<meta property="og:title" content="Valérie — Carnets">
+<meta property="og:description" content="Trois terrains, un même geste de pensée : signaux faibles, architecture des systèmes, écriture.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Valérie — Carnets">
+<meta name="twitter:description" content="Trois terrains, un même geste de pensée : signaux faibles, architecture des systèmes, écriture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+<meta property="og:image" content="https://carnets.valeriemalaval.fr/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://carnets.valeriemalaval.fr/img/og-image.jpg">
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="site-nav">
+    <a class="brand" href="index.html">Valérie</a>
+    <div class="links"><a href="#carnets">Carnets</a></div>
+  </nav>
+</div>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Carnets</div>
+    <h1>Trois terrains,<br>un même <em>geste de pensée</em>.</h1>
+    <p class="lede">Ici se croisent la lecture des signaux faibles, l'architecture des systèmes qui pensent avec nous, et l'écriture d'un roman qui explore la même chose autrement&nbsp;: ce qu'on ne voit pas encore venir.</p>
+    <img class="hero-tree" src="img/arbre.png" alt="Arbre-réseau — un chêne dont les branches se dissolvent en dendrites neuronales" width="720">
+  </section>
+
+  <section class="pillars" id="carnets">
+    <article class="pillar contre-jour">
+      <div class="node">Contre-jour</div>
+      <h3>Ce que personne ne regarde encore</h3>
+      <p>L'ombre devient un actif quand la chaleur devient un risque. La heatmap rassure, mais le monde bouge plus vite qu'elle ne se met à jour.</p>
+    </article>
+    <article class="pillar hors-piste">
+      <div class="node">Hors-piste</div>
+      <h3>Construire ce qui manque</h3>
+      <p>Un outil qui oublie tout entre deux sessions ne fait gagner du temps qu'une fois. Alors on construit le sien.</p>
+    </article>
+    <article class="pillar contrebande">
+      <div class="node">Contrebande</div>
+      <h3>Faire passer ce qui ne passerait pas ailleurs</h3>
+      <p>Eva Langevin, Paris 2028. Le roman fait entrer en fiction ce qu'un rapport n'oserait pas formuler.</p>
+    </article>
+  </section>
+
+  <section>
+    <div class="feed-header">
+      <h2>Derniers carnets</h2>
+      <div class="filters" id="filters">
+        <button data-filter="all" class="active">Tout</button>
+        <button data-filter="contre-jour">Contre-jour</button>
+        <button data-filter="hors-piste">Hors-piste</button>
+        <button data-filter="contrebande">Contrebande</button>
+      </div>
+    </div>
+    <div id="feed"></div>
+  </section>
+
+  <section class="about">
+    <div class="about-eyebrow">À propos</div>
+    <p>Trente ans à observer comment les organisations décident sous pression — Danone, AXA, puis Decathlon. En parallèle&nbsp;: un roman qui pose la même question autrement, et les outils qu'il faut construire soi-même quand la pensée ne suit pas les rails prévus pour elle.</p>
+  </section>
+
+  <footer>
+    <span>© <span id="year"></span> Valérie</span>
+    <span>Écrit à la main, mis en page avec soin.</span>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
