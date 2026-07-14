@@ -1,81 +1,97 @@
 # Carnets — Valérie
 
-Site statique, zéro build step.
+Site statique, zéro framework, déploiement automatique sur Netlify.
 
-## Installer en local
+## Le geste au quotidien (en 30 secondes)
 
-Dézipper, ouvrir un terminal dans le dossier, lancer :
+Pour ajouter un article :
+
+1. **Créer un fichier** dans `articles/mon-slug.md` (n'importe quel éditeur de texte)
+2. **Commit + push** dans le terminal :
+   ```bash
+   cd ~/Projects/carnets
+   git add articles/mon-slug.md
+   git commit -m "Nouvel article : mon titre"
+   git push
+   ```
+3. **C'est en ligne en 1-2 minutes.** Netlify redéploie automatiquement.
+
+**`articles/index.json` n'est plus à toucher.** Le script `build.sh` le regénère tout seul à chaque déploiement en scannant tous les fichiers `.md` du dossier `articles/`.
+
+## Tester en local
 
 ```bash
+cd ~/Projects/carnets
 python3 -m http.server 8000
 ```
 
-Ouvrir `http://localhost:8000`. Ne pas ouvrir `index.html` en double-clic — `fetch()` a besoin d'un vrai serveur.
+Ouvrir `http://localhost:8000`. Ne pas ouvrir `index.html` en double-clic, `fetch()` a besoin d'un vrai serveur.
 
-## Déployer
+## Format d'un article
 
-1. Créer un compte GitHub (gratuit) et un repo (ex. `carnets`)
-2. Installer [GitHub Desktop](https://desktop.github.com)
-3. Cloner le repo, copier ce dossier dedans, commit, push
-4. Sur Netlify : *New site from Git* → connecter le repo → déployer
-
-Ensuite, chaque push republiera le site automatiquement.
-
-## Les 3 gestes au quotidien
-
-Tout se fait dans GitHub Desktop (pas de terminal requis) :
-
-1. **Modifier** : ouvrir un fichier `.md` dans n'importe quel éditeur
-   de texte, sauvegarder
-2. **Commit** : dans GitHub Desktop, écrire une phrase décrivant le
-   changement (ex. "nouvel article sur les heatmaps") → bouton *Commit*
-3. **Push** : bouton *Push origin* → c'est en ligne
-
-## Ajouter un article
-
-Un seul fichier à créer, un seul endroit à mettre à jour.
-
-1. Créer `articles/mon-slug.md` :
+Créer `articles/mon-slug.md` :
 
 ```markdown
 ---
-title: Le titre
+title: Le titre de l'article
 category: contre-jour
 date: 2026-08-15
 tags: mot-un, mot-deux
-teaser: Une phrase d'accroche.
+teaser: Une phrase d'accroche (sinon le premier paragraphe est utilisé).
 ---
 
-Le corps de l'article, en markdown.
+Corps de l'article en markdown.
+
+## Sous-titre possible
+
+- Liste à puces
+- Deuxième item
+
+> Citation en blockquote
 ```
 
-2. Ajouter le slug dans `articles/index.json` :
-
-```json
-[
-  "mon-slug",
-  "a-quoi-sert-encore-une-heatmap",
-  ...
-]
-```
-
-C'est tout. Le titre, la date, la catégorie, les tags et le teaser
-sont lus directement depuis le `.md` — pas de doublon à synchroniser.
+**Champs du front matter** (tous obligatoires sauf `tags` et `teaser`) :
+- `title` — titre affiché
+- `category` — `contre-jour` | `hors-piste` | `contrebande`
+- `date` — format ISO `YYYY-MM-DD`
+- `tags` — mots-clés séparés par des virgules (optionnel)
+- `teaser` — phrase d'accroche affichée dans le feed (optionnel, auto-généré sinon)
 
 ## Modifier un article existant
 
-Ouvrir le `.md` correspondant, changer le texte ou le front matter,
-sauvegarder. Commit + push. Rien d'autre.
+Ouvrir le `.md`, changer le texte ou le front matter, sauvegarder, commit, push. Rien d'autre.
 
-## Modifier la structure (avec mon aide)
+## Modifier le design
 
-Si tu me demandes un changement de structure (nouveau pilier, redesign)
-pendant que tu as déjà ajouté du contenu :
+Moi (Hedda) ou toi, en éditant `style.css`. Les couleurs et polices sont dans les variables CSS en haut du fichier. Une modification + push redéploie en 1-2 minutes.
 
-- Dans GitHub Desktop, tu verras exactement quels fichiers ont changé
-  avant d'accepter ma mise à jour
-- Si `articles/` n'apparaît pas dans la liste → ton contenu est intact
-- Si quelque chose casse → bouton *Undo last commit* ou *Revert*
+## Structure des fichiers
+
+```
+carnets/
+├── index.html              ← page d'accueil
+├── article.html            ← template article
+├── 404.html                ← page d'erreur dans le ton du site
+├── style.css               ← design tokens + mise en page
+├── script.js               ← logique (feed, filtres, rendu markdown)
+├── favicon.svg             ← favicon
+├── build.sh                ← regénère articles/index.json à chaque deploy
+├── netlify.toml            ← dit à Netlify d'exécuter build.sh
+├── img/
+│   ├── arbre.webp          ← illustration hero (43 Ko)
+│   ├── arbre.png           ← fallback (961 Ko)
+│   └── og-image.jpg        ← image partage social (92 Ko)
+├── articles/
+│   ├── index.json          ← liste de slugs (auto-généré, ne pas éditer)
+│   ├── a-quoi-sert-encore-une-heatmap.md
+│   ├── la-monetisation-de-lombre.md
+│   ├── construire-ce-qui-manque.md
+│   └── soigner-ou-gouverner.md
+├── robots.txt
+├── sitemap.xml             ← à régénérer si on ajoute beaucoup d'articles
+├── rss.xml                 ← à régénérer si on ajoute beaucoup d'articles
+└── README.md
+```
 
 ## Catégories
 
@@ -87,24 +103,12 @@ pendant que tu as déjà ajouté du contenu :
 | `hors-piste` | bronze | Construire ce qui manque |
 | `contrebande` | vert profond | Faire passer ce qui ne passerait pas |
 
-Ajouter une catégorie = ajouter une variable `--nom` et `--nom-soft`
-dans `style.css`, plus les classes `.pillar.nom`, `.entry.tag-nom`.
+Ajouter une catégorie = ajouter une variable `--nom` et `--nom-soft` dans `style.css`, plus les classes `.pillar.nom`, `.entry.tag-nom`.
 
-## Structure des fichiers
+## Déploiement
 
-```
-carnets/
-├── index.html          ← page d'accueil
-├── article.html        ← template article
-├── style.css           ← design tokens + mise en page
-├── script.js           ← logique (feed, filtres, rendu markdown)
-├── img/
-│   └── arbre.png       ← illustration hero
-├── articles/
-│   ├── index.json      ← liste de slugs (source unique)
-│   ├── a-quoi-sert-encore-une-heatmap.md
-│   ├── la-monetisation-de-lombre.md
-│   ├── construire-ce-qui-manque.md
-│   └── soigner-ou-gouverner.md
-└── README.md
-```
+GitHub connecté à Netlify. Chaque push sur la branche `main` déclenche un build :
+1. Netlify exécute `build.sh` (regénère `articles/index.json`)
+2. Netlify sert le dossier à `https://valerie-carnets.netlify.app/`
+
+Site déployé automatiquement. Pas de touche manuelle.

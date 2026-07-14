@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carnet introuvable — Valérie</title>
+<meta name="description" content="Cette page n'existe pas (ou plus).">
+<meta name="theme-color" content="#F2F3EE">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .notfound{
+    min-height:60vh;
+    display:flex;flex-direction:column;
+    justify-content:center;align-items:flex-start;
+    padding:4rem 1.5rem;max-width:42rem;margin:0 auto;
+  }
+  .notfound .code{
+    font-family:var(--font-mono);font-size:0.78rem;
+    text-transform:uppercase;letter-spacing:0.12em;
+    color:var(--ink-faint);margin-bottom:1rem;
+  }
+  .notfound h1{
+    font-family:var(--font-display);font-weight:500;
+    font-size:clamp(2rem,5vw,3.2rem);line-height:1.15;
+    margin:0 0 1.25rem;
+  }
+  .notfound p{color:var(--ink-soft);font-size:1.1rem;margin:0 0 2rem;}
+  .notfound a{
+    font-family:var(--font-mono);font-size:0.8rem;
+    text-transform:uppercase;letter-spacing:0.06em;
+    color:var(--ink);text-decoration:none;
+    border-bottom:1px solid var(--rule);padding-bottom:2px;
+  }
+  .notfound a:hover{border-color:var(--ink);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="site-nav">
+    <a class="brand" href="index.html">Valérie</a>
+    <div class="links"><a href="index.html#carnets">Carnets</a></div>
+  </nav>
+</div>
+
+<main class="notfound">
+  <div class="code">404 · Carnet introuvable</div>
+  <h1>Cette page n'existe pas, ou n'existe plus.</h1>
+  <p>Elle a peut-être été déplacée, ou le lien que vous suivez est incomplet. Les carnets, eux, sont toujours là.</p>
+  <a href="index.html">← Retour aux carnets</a>
+</main>
+
+<div class="wrap"><footer>
+  <span>© <span id="year"></span> Valérie</span>
+  <span>Écrit à la main, mis en page avec soin.</span>
+</footer></div>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
